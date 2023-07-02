@@ -27,13 +27,19 @@ app.get('/', (req, res) => {
 
 const button = new Gpio(4, 'in', 'rising', { debounceTimeout: 400 });
 
-button.watch((err, value) => {
+button.watch(async (err, value) => {
     if (err) {
         console.Error('Error', err);
     }
 
     //value (0 or 1) 
     console.log(value)
+    const options = {
+        method: "GET",
+    }
+    const res = await fetch(`https://shavimapp-nodejs-typescript.vercel.app?/${id}`, options)
+    console.log(res.status)
+
 });
 
 
