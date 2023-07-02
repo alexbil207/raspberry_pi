@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
 
 
 
-const button = new Gpio(11, 'in', 'rising', { debounceTimeout: 400 });
+const button = new Gpio(4, 'in', 'rising', { debounceTimeout: 400 });
 
 button.watch((err, value) => {
     if (err) {
