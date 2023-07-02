@@ -1,6 +1,7 @@
 const express = require('express');
 const Gpio = require('onoff').Gpio;
 const cors = require('cors');
+const axios = require('axios');
 const port = 3030
 const app = express();
 const http = require('http').createServer(app);
@@ -34,10 +35,12 @@ button.watch(async (err, value) => {
 
     //value (0 or 1) 
     console.log(value)
-    const options = {
-        method: "GET",
-    }
-    const res = await fetch(`https://shavimapp-nodejs-typescript.vercel.app?/${id}`, options)
+
+    const res = await axios.get(`https://shavimapp-nodejs-typescript.vercel.app?`, {
+        params: {
+            id,
+        }
+    })
     console.log(res.status)
 
 });
