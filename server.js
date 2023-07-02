@@ -36,10 +36,8 @@ button.watch(async (err, value) => {
     //value (0 or 1) 
     console.log(value)
 
-    const res = await axios.get(`https://shavimapp-back.onrender.com`, {
-        params: {
-            id,
-        }
+    const res = await axios.put(`https://shavimapp-back.onrender.com/clicks`, {
+        id
     })
     console.log(res.status)
 
